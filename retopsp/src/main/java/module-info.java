@@ -1,7 +1,8 @@
 module com.retopsp {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.base;
 
-    opens com.retopsp to javafx.fxml;
-    exports com.retopsp;
+    exports com.retopsp.cliente;
+    opens com.retopsp.cliente to javafx.fxml;
 }
