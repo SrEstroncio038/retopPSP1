@@ -1,4 +1,4 @@
-package com.retopsp.cliente;
+package com.retopsp.cliente.controlador;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +17,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        scene = new Scene(loadFXML("chat"), 640, 480);
         stage.setScene(scene);
         stage.show();
     }
@@ -27,7 +27,7 @@ public class App extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/retopsp/" + fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/retopsp/cliente/vista/" + fxml + ".fxml"));
         return fxmlLoader.load();
     }
     
