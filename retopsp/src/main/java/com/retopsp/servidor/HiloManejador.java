@@ -38,7 +38,7 @@ public class HiloManejador extends Thread {
             System.out.println(nombreUsuario + " se ha conectado.");
             Mensaje conexion = new Mensaje("SISTEMA", "TODOS", false, nombreUsuario + " se ha conectado", true);
             for (ObjectOutputStream clienteOut : clientesConectados.values()) {
-                clienteOut.writeObject(conexionaña);
+                clienteOut.writeObject(conexion);
                 clienteOut.flush();
                 clienteOut.reset();
             }
