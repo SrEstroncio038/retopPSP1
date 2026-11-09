@@ -44,6 +44,9 @@ public class HiloManejador extends Thread {
             }
             while (true) {
                 Mensaje msj = (Mensaje) entrada.readObject();
+                
+                HiloMonitor.registrarUltimoMensaje(msj.getEmisor(), msj.getMensaje()); 
+
                 if (msj.isNotificacion() && "DESCONECTAR".equals(msj.getMensaje())) {
                     break;
                 }
@@ -72,7 +75,7 @@ public class HiloManejador extends Thread {
         } finally {
             if (nombreUsuario != null && clientesConectados.containsKey(nombreUsuario)) {
                 clientesConectados.remove(nombreUsuario);
-                System.out.println(nombreUsuario + "se ha desconectado.");
+                System.out.println(nombreUsuario + " se ha desconectado.");
             }
             try {
                 socket.close();
