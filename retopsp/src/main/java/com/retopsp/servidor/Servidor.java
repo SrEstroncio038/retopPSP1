@@ -10,6 +10,7 @@ public class Servidor {
     private static ConcurrentHashMap<String, ObjectOutputStream> clientesConectados = new ConcurrentHashMap<>();
 
     public static void main(String[] args) {
+        LoggerServidor.log("[SERVIDOR] Servidor iniciado en puerto "+ PUERTO);
         System.out.println("=== SERVIDOR DE CHAT INICIADO EN PUERTO " + PUERTO + " ===");
         HiloMonitor monitor = new HiloMonitor(clientesConectados);
         monitor.start();
@@ -17,6 +18,7 @@ public class Servidor {
         try (ServerSocket serverSocket = new ServerSocket(PUERTO)) {
             while (true) {
                 Socket socket = serverSocket.accept();
+                LoggerServidor.log("[CONEXION] Cliente conectado desde "+ socket.getInetAddress());
                 HiloManejador manejador = new HiloManejador(socket, clientesConectados);
                 manejador.start();
             }

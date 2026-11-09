@@ -1,5 +1,6 @@
 package com.retopsp.servidor;
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -31,11 +32,11 @@ public class HiloManejador extends Thread {
                 salida.flush();
                 salida.reset();
                 socket.close();
-                System.out.println("Conexión rechazada para " + nombreUsuario + ": Servidor lleno.");
+                LoggerServidor.log("[ERROR] Conexión rechazada para " + nombreUsuario + ": servidor lleno"); // para guardar esto
                 return;
             }
             clientesConectados.put(nombreUsuario, salida);
-            System.out.println(nombreUsuario + " se ha conectado.");
+            LoggerServidor.log(nombreUsuario + " se ha conectado."); // para que se guarde en el logger
             Mensaje conexion = new Mensaje("SISTEMA", "TODOS", false, nombreUsuario + " se ha conectado", true);
             for (ObjectOutputStream clienteOut : clientesConectados.values()) {
                 clienteOut.writeObject(conexion);
@@ -44,13 +45,16 @@ public class HiloManejador extends Thread {
             }
             while (true) {
                 Mensaje msj = (Mensaje) entrada.readObject();
-                
-                HiloMonitor.registrarUltimoMensaje(msj.getEmisor(), msj.getMensaje()); 
+                LoggerServidor.log("[RECIBIDO] " + msj.getEmisor() + ": " + msj.getMensaje()); // se registra en el log el mensaje recibido con detalles
+
+                HiloMonitor.registrarUltimoMensaje(msj.getEmisor(), msj.getMensaje());
 
                 if (msj.isNotificacion() && "DESCONECTAR".equals(msj.getMensaje())) {
                     break;
                 }
                 if (msj.isPrivado()) {
+                    LoggerServidor
+                            .log("[PRIVADO] " + msj.getEmisor() + " -> " + msj.getReceptor() + ": " + msj.getMensaje()); // un registro para el log
                     ObjectOutputStream destinoOut = clientesConectados.get(msj.getReceptor());
                     if (destinoOut != null) {
                         destinoOut.writeObject(msj);
@@ -63,6 +67,8 @@ public class HiloManejador extends Thread {
                         salida.reset();
                     }
                 } else {
+                    LoggerServidor.log("[PUBLICO] " + msj.getEmisor() + ": " + msj.getMensaje()); // para registrar losmensajes publicos
+
                     for (ObjectOutputStream clienteOut : clientesConectados.values()) {
                         clienteOut.writeObject(msj);
                         clienteOut.flush();
@@ -71,15 +77,36 @@ public class HiloManejador extends Thread {
                 }
             }
         } catch (Exception e) {
+            LoggerServidor.log("[ERROR] Cliente " + nombreUsuario + ": " + e.getMessage());
             System.out.println("Cliente desconectado: " + nombreUsuario);
         } finally {
+            LoggerServidor.log("[DESCONEXION] " + nombreUsuario + " se ha desconectado");
             if (nombreUsuario != null && clientesConectados.containsKey(nombreUsuario)) {
                 clientesConectados.remove(nombreUsuario);
-                System.out.println(nombreUsuario + " se ha desconectado.");
-            }
-            try {
-                socket.close();
-            } catch (Exception ignored) {
+                Mensaje desconexion = new Mensaje(
+                        "SISTEMA",
+                        "TODOS",
+                        false,
+                        nombreUsuario + " se ha desconectado",
+                        true);
+
+                for (ObjectOutputStream clienteOut : clientesConectados.values()) {
+                    try {
+                        clienteOut.writeObject(desconexion);
+                        clienteOut.flush();
+                        clienteOut.reset();
+                    } catch (IOException e) {
+                        LoggerServidor.log(
+                                "[ERROR] No se pudo enviar mensaje de desconexión: "
+                                        + e.getMessage());
+                    }
+                }
+                try {
+                    entrada.close();
+                    salida.close();
+                    socket.close();
+                } catch (Exception ignored) {
+                }
             }
         }
     }

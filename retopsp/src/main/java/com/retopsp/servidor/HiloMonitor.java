@@ -2,7 +2,7 @@ package com.retopsp.servidor;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-public class HiloMonitor extends Thread{
+public class HiloMonitor extends Thread {
     private ConcurrentHashMap<String, ?> clientesConectados;
     private long tiempoInicio;
     private static String ultimoMensaje = "Ninguno todavía";
@@ -26,8 +26,10 @@ public class HiloMonitor extends Thread{
 
                 System.out.println("\n---MONITOR DE SISTEMA ---");
                 System.out.println("Clientes conectados: " + clientesConectados.size());
+                System.out.println("Usuarios: " + clientesConectados.keySet());//para que salga asi: [Etna,Rebeca, Asier] se guardan lasllaves y se muestra solo eso
                 System.out.println("Tiempo activo: " + tiempoActivoSegundos + " segundos");
-                System.out.println("Último mensaje: " + ultimoMensaje);
+                System.out.println("Último mensaje: " + ultimoMensaje); 
+                LoggerServidor.log("[MONITOR] Clientes="+ clientesConectados.size() + ", Tiempo="+ tiempoActivoSegundos+ "s, UltimoMensaje="+ ultimoMensaje);
 
             } catch (InterruptedException e) {
                 System.out.println("Hilo monitor interrumpido.");

@@ -1,0 +1,27 @@
+[2026-11-09T22:06:58.606922] [SERVIDOR] Servidor iniciado en puerto 5000
+[2026-11-09T22:07:13.701194] [MONITOR] Clientes=0, Tiempo=15s, UltimoMensaje=Ninguno todavía
+[2026-11-09T22:07:28.706461100] [MONITOR] Clientes=0, Tiempo=30s, UltimoMensaje=Ninguno todavía
+[2026-11-09T22:07:43.711531800] [MONITOR] Clientes=0, Tiempo=45s, UltimoMensaje=Ninguno todavía
+[2026-11-09T22:07:44.841856300] [CONEXION] Cliente conectado desde /127.0.0.1
+[2026-11-09T22:07:44.892859300] Rebeca se ha conectado.
+[2026-11-09T22:07:58.094845] [CONEXION] Cliente conectado desde /127.0.0.1
+[2026-11-09T22:07:58.118831200] Asier se ha conectado.
+[2026-11-09T22:07:58.715841] [MONITOR] Clientes=2, Tiempo=60s, UltimoMensaje=Ninguno todavía
+[2026-11-09T22:08:10.747355800] [RECIBIDO] Asier: holaaaaaa
+[2026-11-09T22:08:10.753361700] [PUBLICO] Asier: holaaaaaa
+[2026-11-09T22:08:13.720922200] [MONITOR] Clientes=2, Tiempo=75s, UltimoMensaje=Asier: holaaaaaa
+[2026-11-09T22:08:18.725347900] [RECIBIDO] Asier: heeee
+[2026-11-09T22:08:18.736328500] [PRIVADO] Asier -> Rebeca: heeee
+[2026-11-09T22:08:28.725969200] [MONITOR] Clientes=2, Tiempo=90s, UltimoMensaje=Asier: heeee
+[2026-11-09T22:08:43.730541] [MONITOR] Clientes=2, Tiempo=105s, UltimoMensaje=Asier: heeee
+[2026-11-09T22:08:58.735865100] [MONITOR] Clientes=2, Tiempo=120s, UltimoMensaje=Asier: heeee
+[2026-11-09T22:09:13.741301800] [MONITOR] Clientes=2, Tiempo=135s, UltimoMensaje=Asier: heeee
+[2026-11-09T22:09:28.745497800] [MONITOR] Clientes=2, Tiempo=150s, UltimoMensaje=Asier: heeee
+[2026-11-09T22:09:43.749591700] [MONITOR] Clientes=2, Tiempo=165s, UltimoMensaje=Asier: heeee
+[2026-11-09T22:09:58.769060200] [MONITOR] Clientes=2, Tiempo=180s, UltimoMensaje=Asier: heeee
+[2026-11-09T22:10:13.775151500] [MONITOR] Clientes=2, Tiempo=195s, UltimoMensaje=Asier: heeee
+[2026-11-09T22:10:28.785400700] [MONITOR] Clientes=2, Tiempo=210s, UltimoMensaje=Asier: heeee
+[2026-11-09T22:10:43.799634500] [MONITOR] Clientes=2, Tiempo=225s, UltimoMensaje=Asier: heeee
+[2026-11-09T22:10:58.816850300] [MONITOR] Clientes=2, Tiempo=240s, UltimoMensaje=Asier: heeee
+[2026-11-09T22:11:13.825901500] [MONITOR] Clientes=2, Tiempo=255s, UltimoMensaje=Asier: heeee
+[2026-11-09T22:11:28.831602300] [MONITOR] Clientes=2, Tiempo=270s, UltimoMensaje=Asier: heeee

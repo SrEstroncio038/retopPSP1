@@ -44,7 +44,7 @@ public class ChatController {
     private TextField ip;
 
     @FXML
-    private TextField mensage;
+    private TextField mensaje;
 
     @FXML
     private HBox p;
@@ -64,7 +64,7 @@ public class ChatController {
     private ObservableList<String> mensajes;
     private Socket socket;
     private ObjectOutputStream salida;
-    private HiloRecivir hiloRecibir;
+    private HiloRecibir hiloRecibir;
 
     @FXML
     void initialize() {
@@ -98,7 +98,7 @@ public class ChatController {
             String nombreUsuario = user.getText();
             salida.writeObject(nombreUsuario);
             salida.flush();
-            hiloRecibir = new HiloRecivir(entrada, this);
+            hiloRecibir = new HiloRecibir(entrada, this);
             hiloRecibir.start();
             desconectar.setDisable(false);
             conectar.setDisable(true);
@@ -107,7 +107,7 @@ public class ChatController {
             puerto.setDisable(true);
             estado.setText("Conectado");
             chat.setItems(mensajes);
-            mensajes.add("Conectado con exito.");
+            mensajes.add("Conectado con éxito.");
         } catch (IOException e) {
             mostrarErrorConexion("No se pudo conectar al servidor. Comprueba la IP y el puerto.");
             e.printStackTrace();
@@ -116,12 +116,12 @@ public class ChatController {
 
     @FXML
     public void enviarMensaje() {
-        Mensaje msj = new Mensaje(user.getText(), receptor.getText(), privado.isSelected(), mensage.getText(),
+        Mensaje msj = new Mensaje(user.getText(), receptor.getText(), privado.isSelected(), mensaje.getText(),
                 false);
         Thread hiloEnvio = new Thread(new HiloEnviar(salida, msj));
         hiloEnvio.start();
 
-        mensage.clear();
+        mensaje.clear();
     }
 
     @FXML

@@ -39,7 +39,7 @@
             <CheckBox fx:id="privado" mnemonicParsing="false" text="Privado" />
             <Label text="Para:" />
             <TextField fx:id="receptor" prefWidth="100.0" promptText="admin" />
-            <TextField fx:id="mensage" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="mensaje" HBox.hgrow="ALWAYS" />
             <Button fx:id="enviar" mnemonicParsing="false" onAction="#enviarMensaje" prefWidth="70.0" text="Enviar" />
          </children>
       </HBox>
