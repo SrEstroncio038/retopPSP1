@@ -7,12 +7,12 @@ import com.retopsp.cliente.modelo.Mensaje;
 
 import javafx.application.Platform;
 
-public class HiloRecivir extends Thread {
+public class HiloRecibir extends Thread {
     private ObjectInputStream entrada;
     private ChatController controlador;
     private boolean activo = true;
 
-    public HiloRecivir(ObjectInputStream entrada, ChatController controlador) {
+    public HiloRecibir(ObjectInputStream entrada, ChatController controlador) {
         this.entrada = entrada;
         this.controlador = controlador;
     }
