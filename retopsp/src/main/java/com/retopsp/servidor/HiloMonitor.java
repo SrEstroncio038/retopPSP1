@@ -3,7 +3,7 @@ package com.retopsp.servidor;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class HiloMonitor extends Thread {
-    private ConcurrentHashMap<String, ?> clientesConectados;
+    private ConcurrentHashMap<String, ?> clientesConectados; //hashMap para hilos
     private long tiempoInicio;
     private static String ultimoMensaje = "Ninguno todavía";
 
@@ -20,9 +20,9 @@ public class HiloMonitor extends Thread {
     public void run() {
         while (true) {
             try {
-                Thread.sleep(15000);
+                Thread.sleep(15000); //tiempo en milesimas que va a esperar entre informe e informe
 
-                long tiempoActivoSegundos = (System.currentTimeMillis() - tiempoInicio) / 1000;
+                long tiempoActivoSegundos = (System.currentTimeMillis() - tiempoInicio) / 1000; //pasa el tiempo a segundos
 
                 System.out.println("\n---MONITOR DE SISTEMA ---");
                 System.out.println("Clientes conectados: " + clientesConectados.size());
@@ -32,7 +32,7 @@ public class HiloMonitor extends Thread {
                 LoggerServidor.log("[MONITOR] Clientes="+ clientesConectados.size() + ", Tiempo="+ tiempoActivoSegundos+ "s, UltimoMensaje="+ ultimoMensaje);
 
             } catch (InterruptedException e) {
-                System.out.println("Hilo monitor interrumpido.");
+                System.out.println("[MONITOR] Hilo monitor interrumpido.");
                 break;
             }
         }
