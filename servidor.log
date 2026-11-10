@@ -25,3 +25,7 @@
 [2026-11-09T22:10:58.816850300] [MONITOR] Clientes=2, Tiempo=240s, UltimoMensaje=Asier: heeee
 [2026-11-09T22:11:13.825901500] [MONITOR] Clientes=2, Tiempo=255s, UltimoMensaje=Asier: heeee
 [2026-11-09T22:11:28.831602300] [MONITOR] Clientes=2, Tiempo=270s, UltimoMensaje=Asier: heeee
+[2026-11-10T10:33:21.959414200] [SERVIDOR] Servidor iniciado en puerto 5000
+[2026-11-10T10:33:36.972071700] [MONITOR] Clientes=0, Tiempo=15s, UltimoMensaje=Ninguno todavía
+[2026-11-10T10:33:51.974236500] [MONITOR] Clientes=0, Tiempo=30s, UltimoMensaje=Ninguno todavía
+[2026-11-10T10:41:19.390394100] [SERVIDOR] Servidor iniciado en puerto 5000

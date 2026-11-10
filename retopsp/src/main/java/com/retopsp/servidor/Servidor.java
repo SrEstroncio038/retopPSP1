@@ -14,7 +14,6 @@ public class Servidor {
         System.out.println("=== SERVIDOR DE CHAT INICIADO EN PUERTO " + PUERTO + " ===");
         HiloMonitor monitor = new HiloMonitor(clientesConectados);
         monitor.start();
-
         try (ServerSocket serverSocket = new ServerSocket(PUERTO)) {
             while (true) {
                 Socket socket = serverSocket.accept();

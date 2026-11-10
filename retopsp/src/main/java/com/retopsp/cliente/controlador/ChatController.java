@@ -71,25 +71,25 @@ public class ChatController {
     @FXML
     void conectar() {
         String direccionIp;
-        if (ip.getText().isEmpty()) {
-            direccionIp = "127.0.0.1";
+        if (ip.getText().isEmpty()) { 
+            direccionIp = "127.0.0.1"; // si esta vacio 
         } else {
             direccionIp = ip.getText();
         }
         int numPuerto;
         try {
             if (puerto.getText().isEmpty()) {
-                numPuerto = 5000;
+                numPuerto = 5050;
             } else {
                 numPuerto = Integer.parseInt(puerto.getText());
             }
         } catch (NumberFormatException e) {
-            numPuerto = 12345;
+            numPuerto = 5050; //si pone algo que no son numeros 
         }
         try {
             socket = new Socket(direccionIp, numPuerto);
             salida = new ObjectOutputStream(socket.getOutputStream());
-            salida.flush();
+            salida.flush(); // para limpiar la salida y evitar errores
             ObjectInputStream entrada = new ObjectInputStream(socket.getInputStream());
             String nombreUsuario = user.getText();
             salida.writeObject(nombreUsuario);
@@ -143,8 +143,8 @@ public class ChatController {
         } finally {
             desconectar.setDisable(true);
             conectar.setDisable(false);
-            user.setDisable(false);
-            ip.setDisable(false);
+            user.setText("");
+            ip.setText("");
         }
     }
 

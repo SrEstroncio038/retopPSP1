@@ -13,7 +13,7 @@ public class HiloManejador extends Thread {
     private ObjectOutputStream salida;
     private ObjectInputStream entrada;
     private String nombreUsuario;
-    private ConcurrentHashMap<String, ObjectOutputStream> clientesConectados;
+    private ConcurrentHashMap<String, ObjectOutputStream> clientesConectados; //hashMap para hilos
 
     public HiloManejador(Socket socket, ConcurrentHashMap<String, ObjectOutputStream> clientesConectados) {
         this.socket = socket;
@@ -47,10 +47,10 @@ public class HiloManejador extends Thread {
                 Mensaje msj = (Mensaje) entrada.readObject();
                 LoggerServidor.log("[RECIBIDO] " + msj.getEmisor() + ": " + msj.getMensaje()); // se registra en el log el mensaje recibido con detalles
 
-                HiloMonitor.registrarUltimoMensaje(msj.getEmisor(), msj.getMensaje());
+                HiloMonitor.registrarUltimoMensaje(msj.getEmisor(), msj.getMensaje()); // Guarda el ultimo mensaje
 
                 if (msj.isNotificacion() && "DESCONECTAR".equals(msj.getMensaje())) {
-                    break;
+                    break; //Para desconectar se crea un mensaje con texto DESCONECTAR aqui lo chequea Y PONE NOTIFICACION TRUE PARA no confundirlo con el texto de un mensaje
                 }
                 if (msj.isPrivado()) {
                     LoggerServidor

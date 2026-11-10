@@ -22,7 +22,7 @@ public class HiloRecibir extends Thread {
         try {
             while (true) {
                 Mensaje msj = (Mensaje) entrada.readObject();
-                Platform.runLater(() -> {
+                Platform.runLater(() -> { // Para trabajar con hilos en FXML, para actualizar al momento
                     if (msj.isPrivado()) {
                         controlador.escribirMensajePrivado(msj);
                     } else {

@@ -61,5 +61,6 @@ public class Mensaje implements Serializable {
         this.mensaje = mensaje;
         this.notificacion = notificacion;
     }
+    
 
 }
