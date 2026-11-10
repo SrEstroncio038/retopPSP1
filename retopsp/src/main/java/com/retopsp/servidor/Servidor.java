@@ -6,7 +6,7 @@ import java.net.Socket;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Servidor {
-    private static final int PUERTO = 5000;
+    private static final int PUERTO = 5050;
     private static ConcurrentHashMap<String, ObjectOutputStream> clientesConectados = new ConcurrentHashMap<>();
 
     public static void main(String[] args) {
