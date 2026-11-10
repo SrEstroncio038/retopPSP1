@@ -126,6 +126,7 @@ public class ChatController {
             Mensaje msjDesconexion = new Mensaje(user.getText(), "SERVIDOR", false, "DESCONECTAR", true);
             salida.writeObject(msjDesconexion);
             salida.flush();
+            estado.setText("No conectado");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

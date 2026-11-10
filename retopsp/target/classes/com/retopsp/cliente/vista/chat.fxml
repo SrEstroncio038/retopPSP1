@@ -7,28 +7,37 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 
-<BorderPane prefHeight="503.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.retopsp.cliente.controlador.ChatController">
+<BorderPane prefHeight="503.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.retopsp.cliente.controlador.ChatController">
    <top>
-      <HBox alignment="CENTER_LEFT" spacing="10.0" BorderPane.alignment="CENTER">
+      <BorderPane BorderPane.alignment="CENTER">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
-         <children>
-            <Label text="IP:" />
-            <TextField fx:id="ip" prefWidth="110.0" promptText="127.0.0.1" HBox.hgrow="SOMETIMES" />
-            <Label text="Puerto:" />
-            <TextField fx:id="puerto" prefWidth="60.0" promptText="5000" />
-            <Label text="Usuario:" />
-            <TextField fx:id="user" prefWidth="110.0" promptText="Duxon" HBox.hgrow="SOMETIMES" />
-            <Button fx:id="conectar" mnemonicParsing="false" onAction="#conectar" text="Conectar" />
-            <Button fx:id="desconectar" disable="true" mnemonicParsing="false" text="Desconectar" onAction= "#desconectar" />
-            <Region HBox.hgrow="ALWAYS" />
-            <Label fx:id="estado" text="No conectado" />
-         </children>
-      </HBox>
+         <center>
+            <FlowPane alignment="CENTER_LEFT" hgap="10.0" vgap="8.0" BorderPane.alignment="CENTER_LEFT">
+               <children>
+                  <Label minWidth="-Infinity" text="IP:" />
+                  <TextField fx:id="ip" prefWidth="110.0" promptText="127.0.0.1" />
+                  <Label minWidth="-Infinity" text="Puerto:" />
+                  <TextField fx:id="puerto" prefWidth="60.0" promptText="5000" />
+                  <Label minWidth="-Infinity" text="Usuario:" />
+                  <TextField fx:id="user" prefWidth="110.0" promptText="Duxon" />
+                  <Button fx:id="conectar" minWidth="-Infinity" mnemonicParsing="false" onAction="#conectar" text="Conectar" />
+                  <Button fx:id="desconectar" disable="true" minWidth="-Infinity" mnemonicParsing="false" onAction="#desconectar" text="Desconectar" />
+               </children>
+            </FlowPane>
+         </center>
+         <right>
+            <Label fx:id="estado" minWidth="-Infinity" text="No conectado" BorderPane.alignment="TOP_RIGHT">
+               <BorderPane.margin>
+                  <Insets left="15.0" />
+               </BorderPane.margin>
+            </Label>
+         </right>
+      </BorderPane>
    </top>
    <bottom>
       <HBox fx:id="p" alignment="CENTER_LEFT" spacing="10.0" BorderPane.alignment="CENTER">
@@ -36,11 +45,11 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
          <children>
-            <CheckBox fx:id="privado" mnemonicParsing="false" text="Privado" />
-            <Label text="Para:" />
-            <TextField fx:id="receptor" prefWidth="100.0" promptText="admin" />
-            <TextField fx:id="mensaje" HBox.hgrow="ALWAYS" />
-            <Button fx:id="enviar" mnemonicParsing="false" onAction="#enviarMensaje" prefWidth="70.0" text="Enviar" />
+            <CheckBox fx:id="privado" minWidth="-Infinity" mnemonicParsing="false" text="Privado" />
+            <Label minWidth="-Infinity" text="Para:" />
+            <TextField fx:id="receptor" minWidth="50.0" prefWidth="100.0" promptText="admin" />
+            <TextField fx:id="mensaje" minWidth="60.0" HBox.hgrow="ALWAYS" />
+            <Button fx:id="enviar" minWidth="-Infinity" mnemonicParsing="false" onAction="#enviarMensaje" text="Enviar" />
          </children>
       </HBox>
    </bottom>
