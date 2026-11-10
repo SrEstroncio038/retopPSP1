@@ -61,6 +61,7 @@ public class ChatController {
     private Socket socket;
     private ObjectOutputStream salida;
     private HiloRecibir hiloRecibir;
+    private int cont = 0;
 
     @FXML
     void initialize() {
@@ -71,12 +72,13 @@ public class ChatController {
     @FXML
     void conectar() {
         String direccionIp;
+        int numPuerto;
+        String usuario;
         if (ip.getText().isEmpty()) { 
             direccionIp = "127.0.0.1"; // si esta vacio 
         } else {
             direccionIp = ip.getText();
         }
-        int numPuerto;
         try {
             if (puerto.getText().isEmpty()) {
                 numPuerto = 5050;
@@ -86,13 +88,19 @@ public class ChatController {
         } catch (NumberFormatException e) {
             numPuerto = 5050; //si pone algo que no son numeros 
         }
+        if(user.getText().isEmpty()){
+            usuario = "Usuario" + cont;
+            cont++;
+        }else{
+            usuario = user.getText();
+        }
         try {
             socket = new Socket(direccionIp, numPuerto);
             salida = new ObjectOutputStream(socket.getOutputStream());
             salida.flush(); // para limpiar la salida y evitar errores
             ObjectInputStream entrada = new ObjectInputStream(socket.getInputStream());
             String nombreUsuario = user.getText();
-            salida.writeObject(nombreUsuario);
+            salida.writeObject(usuario);
             salida.flush();
             hiloRecibir = new HiloRecibir(entrada, this);
             hiloRecibir.start();
